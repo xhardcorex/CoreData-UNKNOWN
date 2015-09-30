@@ -46,24 +46,6 @@ static NSString* carModelNames[] = {
 
 @implementation AppDelegate
 
-- (NSStudent*) addRandomStudent {
-    
-    NSStudent* student =
-    [NSEntityDescription insertNewObjectForEntityForName:@"NSStudent"
-                                  inManagedObjectContext:self.managedObjectContext];
-    student.firstName = firstNames[arc4random_uniform(50)];
-    student.lastName = lastNames[arc4random_uniform(50)];
-    student.age = [NSNumber numberWithInt:10+arc4random()%20];
-    NSError* error = nil;
-    
-    /*if(![self.managedObjectContext save:&error]){
-        
-        NSLog(@"%@",[error localizedDescription]);
-        
-    }*/
-    
-    return student;
-}
 - (void) printAll{
     
     NSFetchRequest* request = [[NSFetchRequest alloc]init];

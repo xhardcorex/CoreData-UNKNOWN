@@ -8,39 +8,19 @@
 
 #import "NSMainTableViewController.h"
 #import "NSStudent.h"
+#import "NSCoreData.h"
 
-static NSString* firstNames[] = {
-    @"Tran", @"Lenore", @"Bud", @"Fredda", @"Katrice",
-    @"Clyde", @"Hildegard", @"Vernell", @"Nellie", @"Rupert",
-    @"Billie", @"Tamica", @"Crystle", @"Kandi", @"Caridad",
-    @"Vanetta", @"Taylor", @"Pinkie", @"Ben", @"Rosanna",
-    @"Eufemia", @"Britteny", @"Ramon", @"Jacque", @"Telma",
-    @"Colton", @"Monte", @"Pam", @"Tracy", @"Tresa",
-    @"Willard", @"Mireille", @"Roma", @"Elise", @"Trang",
-    @"Ty", @"Pierre", @"Floyd", @"Savanna", @"Arvilla",
-    @"Whitney", @"Denver", @"Norbert", @"Meghan", @"Tandra",
-    @"Jenise", @"Brent", @"Elenor", @"Sha", @"Jessie"
-};
-
-static NSString* lastNames[] = {
-    
-    @"Farrah", @"Laviolette", @"Heal", @"Sechrest", @"Roots",
-    @"Homan", @"Starns", @"Oldham", @"Yocum", @"Mancia",
-    @"Prill", @"Lush", @"Piedra", @"Castenada", @"Warnock",
-    @"Vanderlinden", @"Simms", @"Gilroy", @"Brann", @"Bodden",
-    @"Lenz", @"Gildersleeve", @"Wimbish", @"Bello", @"Beachy",
-    @"Jurado", @"William", @"Beaupre", @"Dyal", @"Doiron",
-    @"Plourde", @"Bator", @"Krause", @"Odriscoll", @"Corby",
-    @"Waltman", @"Michaud", @"Kobayashi", @"Sherrick", @"Woolfolk",
-    @"Holladay", @"Hornback", @"Moler", @"Bowles", @"Libbey",
-    @"Spano", @"Folson", @"Arguelles", @"Burke", @"Rook"
-};
 
 @interface NSMainTableViewController ()
 @property (strong,nonatomic) NSArray* array;
 @end
 
 @implementation NSMainTableViewController
+
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize managedObjectModel = _managedObjectModel;
+@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,9 +29,18 @@ static NSString* lastNames[] = {
         [self addRandomStudent];
     }*/
     
-    
-    
+    //[[NSCoreData sharedManager ] deleteAllObjects];
+  /*for (int i = 0 ; i < 30; i++) {
+        [[NSCoreData sharedManager]addRandomStudent];
+    }*/
 
+}
+- (NSManagedObjectContext*) managedObjectContext {
+    
+    if (!_managedObjectContext) {
+        _managedObjectContext = [[NSCoreData sharedManager] managedObjectContext];
+    }
+    return _managedObjectContext;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,21 +50,169 @@ static NSString* lastNames[] = {
 
 #pragma mark - Table view data source
 
+#pragma mark - Table View
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
+    self.fetchedResultsController = [[NSCoreData sharedManager] getAllStudents];
+    self.fetchedResultsController.delegate = self;
     
-    return 1;
+    return [[self.fetchedResultsController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-
-    
-    [self printAll];
-    NSLog(@" [self.array count]  = %d ",[self.array count]);
-    return [self.array count];
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    return [sectionInfo numberOfObjects];
 }
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  /*  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    [self configureCell:cell atIndexPath:indexPath];
+    return cell;*/
+    
+    static NSString* identifier =@"Identifier";
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:identifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    
+    //Если ячейка не найдена
+    
+    if(!cell){
+        cell = [[UITableViewCell alloc]initWithStyle:  UITableViewCellStyleValue1 reuseIdentifier:identifier];
+    }
+    NSStudent* student = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    cell.textLabel.text =[NSString stringWithFormat:@"%@ %@",student.firstName,student.lastName];
+    
+    return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+        [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+        
+        NSError *error = nil;
+        if (![context save:&error]) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
+}
+
+#pragma mark - Fetched results controller
+
+- (NSFetchedResultsController *)fetchedResultsController
+{
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    // Edit the entity name as appropriate.
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    // Set the batch size to a suitable number.
+    [fetchRequest setFetchBatchSize:20];
+    
+    // Edit the sort key as appropriate.
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    // Edit the section name key path and cache name if appropriate.
+    // nil for section name key path means "no sections".
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    aFetchedResultsController.delegate = self;
+    self.fetchedResultsController = aFetchedResultsController;
+    
+    NSError *error = nil;
+    if (![self.fetchedResultsController performFetch:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    return _fetchedResultsController;
+}
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView beginUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
+{
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        default:
+            return;
+    }
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+    UITableView *tableView = self.tableView;
+    
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView endUpdates];
+}
+
+/*
+ // Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed.
+ 
+ - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+ {
+ // In the simplest, most efficient, case, reload the table view.
+ [self.tableView reloadData];
+ }
+ */
+
+
 //
 //  ViewController.m
 //  CoreData UNKNOWN
@@ -83,63 +220,8 @@ static NSString* lastNames[] = {
 //  Created by Nik on 29.09.15.
 //  Copyright (c) 2015 Nik. All rights reserved.
 //
-- (NSStudent*) addRandomStudent {
-    
-    NSStudent* student =
-    [NSEntityDescription insertNewObjectForEntityForName:@"NSStudent"
-                                  inManagedObjectContext:self.managedObjectContext];
-    student.firstName = firstNames[arc4random_uniform(50)];
-    student.lastName = lastNames[arc4random_uniform(50)];
-    student.age = [NSNumber numberWithInt:10+arc4random()%20];
-    /*if(![self.managedObjectContext save:&error]){
-     
-     NSLog(@"%@",[error localizedDescription]);
-     
-     }*/
-    [self.managedObjectContext save:nil];
-    return student;
-}
-- (void) printAll{
-    
-    NSFetchRequest* request = [[NSFetchRequest alloc]init];
-    
-    NSEntityDescription* description =
-    [NSEntityDescription entityForName:@"NSStudent" inManagedObjectContext:self.managedObjectContext];
-    
-    
-    NSArray* validNames = @[@"Tran"];
-    [request setEntity:description];
-    
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"firstName IN %@",validNames];
-    
-    [request setPredicate:predicate];
-    NSError* errors= nil;
-    
-    self.array = [self.managedObjectContext executeFetchRequest:request error:&errors];
-    
-    
-    
-    for (NSStudent* student  in self.array ) {
-        
-        NSLog(@"%@ %@ %@",student.firstName,student.lastName,student.age);
-        //  [self.managedObjectContext deleteObject:student];
-        
-    }
-    [self.managedObjectContext save:nil];
-    
-    
-}
-
-
-
-
 #pragma mark - Core Data stack
-
-@synthesize managedObjectContext = _managedObjectContext;
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-
-- (NSURL *)applicationDocumentsDirectory {
+ - (NSURL *)applicationDocumentsDirectory {
     // The directory the application uses to store the Core Data store file. This code uses a directory named "nik.CoreData_UNKNOWN" in the application's documents directory.
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
@@ -183,7 +265,28 @@ static NSString* lastNames[] = {
 }
 
 
-- (NSManagedObjectContext *)managedObjectContext {
+
+- (void)insertNewObject:(id)sender {
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
+    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
+    
+    // If appropriate, configure the new managed object.
+    // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
+    [newManagedObject setValue:[NSDate date] forKey:@"timeStamp"];
+    
+    // Save the context.
+    NSError *error = nil;
+    if (![context save:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+}
+
+
+/*- (NSManagedObjectContext *)managedObjectContext {
     // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.)
     if (_managedObjectContext != nil) {
         return _managedObjectContext;
@@ -196,7 +299,7 @@ static NSString* lastNames[] = {
     _managedObjectContext = [[NSManagedObjectContext alloc] init];
     [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     return _managedObjectContext;
-}
+}*/
 
 #pragma mark - Core Data Saving support
 
@@ -219,23 +322,7 @@ static NSString* lastNames[] = {
 
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString* identifier =@"Identifier";
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:identifier];
-   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    
-    //Если ячейка не найдена
- 
-    if(!cell){
-        cell = [[UITableViewCell alloc]initWithStyle:  UITableViewCellStyleValue1 reuseIdentifier:identifier];
-    }
-       NSStudent* student = [self.array objectAtIndex: indexPath.row];
-    
-    cell.textLabel.text =[NSString stringWithFormat:@"%@ %@",student.firstName,student.lastName];
-    
-    return cell;
-}
+
 
 
 /*
