@@ -17,6 +17,7 @@
 		24A3C21B1BBB349200A93372 /* NSStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C21A1BBB349200A93372 /* NSStudent.m */; };
 		24A3C21E1BBBFDD700A93372 /* NSMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C21D1BBBFDD700A93372 /* NSMainTableViewController.m */; };
 		24A3C2211BBC211400A93372 /* NSCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C2201BBC211400A93372 /* NSCoreData.m */; };
+		24A3C2241BBC55D900A93372 /* NSCreateStudentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C2231BBC55D900A93372 /* NSCreateStudentTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		24A3C21D1BBBFDD700A93372 /* NSMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSMainTableViewController.m; path = ../NSMainTableViewController.m; sourceTree = "<group>"; };
 		24A3C21F1BBC211400A93372 /* NSCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSCoreData.h; path = ../NSCoreData.h; sourceTree = "<group>"; };
 		24A3C2201BBC211400A93372 /* NSCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSCoreData.m; path = ../NSCoreData.m; sourceTree = "<group>"; };
+		24A3C2221BBC55D900A93372 /* NSCreateStudentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSCreateStudentTableViewController.h; sourceTree = "<group>"; };
+		24A3C2231BBC55D900A93372 /* NSCreateStudentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSCreateStudentTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +74,8 @@
 		24A3C1E41BBAFF3100A93372 = {
 			isa = PBXGroup;
 			children = (
+				24A3C2221BBC55D900A93372 /* NSCreateStudentTableViewController.h */,
+				24A3C2231BBC55D900A93372 /* NSCreateStudentTableViewController.m */,
 				24A3C1EF1BBAFF3100A93372 /* CoreData UNKNOWN */,
 				24A3C20C1BBAFF3100A93372 /* CoreData UNKNOWNTests */,
 				24A3C1EE1BBAFF3100A93372 /* Products */,
@@ -232,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24A3C2241BBC55D900A93372 /* NSCreateStudentTableViewController.m in Sources */,
 				24A3C1F61BBAFF3100A93372 /* AppDelegate.m in Sources */,
 				24A3C1F91BBAFF3100A93372 /* CoreData_UNKNOWN.xcdatamodeld in Sources */,
 				24A3C1F31BBAFF3100A93372 /* main.m in Sources */,
