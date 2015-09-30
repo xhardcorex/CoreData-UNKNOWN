@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ZNR-Vv-2pC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="w8x-Lt-qd6">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -8,6 +8,7 @@
         <scene sceneID="Sfb-Ln-srd">
             <objects>
                 <navigationController id="ZNR-Vv-2pC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="mostRecent" id="Iin-Fn-cBG"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vam-fj-oa2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -19,7 +20,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CZ4-a6-26t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1359" y="-181"/>
+            <point key="canvasLocation" x="-1365" y="-563"/>
         </scene>
         <!--Main Table View Controller-->
         <scene sceneID="PcC-ZX-YfZ">
@@ -53,7 +54,26 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z07-a2-ePL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-961" y="-181"/>
+            <point key="canvasLocation" x="-917" y="-563"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="kgi-wF-Aha">
+            <objects>
+                <tabBarController id="w8x-Lt-qd6" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="J7x-Zc-loY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ZNR-Vv-2pC" kind="relationship" relationship="viewControllers" id="Dta-WF-FA5"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AcH-2I-LlI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1910" y="-602"/>
         </scene>
         <!--Create Student Table View Controller-->
         <scene sceneID="pNw-4A-6w3">
@@ -157,7 +177,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o5H-47-b9T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-553" y="-181"/>
+            <point key="canvasLocation" x="-563" y="-563"/>
         </scene>
     </scenes>
 </document>
