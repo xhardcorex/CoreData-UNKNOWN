@@ -8,7 +8,7 @@
 
 #import "NSMainTableViewController.h"
 #import "NSStudent.h"
-sss
+
 static NSString* firstNames[] = {
     @"Tran", @"Lenore", @"Bud", @"Fredda", @"Katrice",
     @"Clyde", @"Hildegard", @"Vernell", @"Nellie", @"Rupert",
