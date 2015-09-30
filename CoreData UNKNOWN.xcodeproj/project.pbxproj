@@ -10,11 +10,12 @@
 		24A3C1F31BBAFF3100A93372 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C1F21BBAFF3100A93372 /* main.m */; };
 		24A3C1F61BBAFF3100A93372 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C1F51BBAFF3100A93372 /* AppDelegate.m */; };
 		24A3C1F91BBAFF3100A93372 /* CoreData_UNKNOWN.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C1F71BBAFF3100A93372 /* CoreData_UNKNOWN.xcdatamodeld */; };
-		24A3C1FC1BBAFF3100A93372 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C1FB1BBAFF3100A93372 /* ViewController.m */; };
 		24A3C1FF1BBAFF3100A93372 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24A3C1FD1BBAFF3100A93372 /* Main.storyboard */; };
 		24A3C2011BBAFF3100A93372 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24A3C2001BBAFF3100A93372 /* Images.xcassets */; };
 		24A3C2041BBAFF3100A93372 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24A3C2021BBAFF3100A93372 /* LaunchScreen.xib */; };
 		24A3C2101BBAFF3100A93372 /* CoreData_UNKNOWNTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C20F1BBAFF3100A93372 /* CoreData_UNKNOWNTests.m */; };
+		24A3C21B1BBB349200A93372 /* NSStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C21A1BBB349200A93372 /* NSStudent.m */; };
+		24A3C21E1BBBFDD700A93372 /* NSMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C21D1BBBFDD700A93372 /* NSMainTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,14 +35,16 @@
 		24A3C1F41BBAFF3100A93372 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		24A3C1F51BBAFF3100A93372 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		24A3C1F81BBAFF3100A93372 /* CoreData_UNKNOWN.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData_UNKNOWN.xcdatamodel; sourceTree = "<group>"; };
-		24A3C1FA1BBAFF3100A93372 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		24A3C1FB1BBAFF3100A93372 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		24A3C1FE1BBAFF3100A93372 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		24A3C2001BBAFF3100A93372 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		24A3C2031BBAFF3100A93372 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		24A3C2091BBAFF3100A93372 /* CoreData UNKNOWNTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CoreData UNKNOWNTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24A3C20E1BBAFF3100A93372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24A3C20F1BBAFF3100A93372 /* CoreData_UNKNOWNTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreData_UNKNOWNTests.m; sourceTree = "<group>"; };
+		24A3C2191BBB349200A93372 /* NSStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStudent.h; sourceTree = "<group>"; };
+		24A3C21A1BBB349200A93372 /* NSStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStudent.m; sourceTree = "<group>"; };
+		24A3C21C1BBBFDD700A93372 /* NSMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMainTableViewController.h; sourceTree = "<group>"; };
+		24A3C21D1BBBFDD700A93372 /* NSMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMainTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,8 @@
 		24A3C1E41BBAFF3100A93372 = {
 			isa = PBXGroup;
 			children = (
+				24A3C21C1BBBFDD700A93372 /* NSMainTableViewController.h */,
+				24A3C21D1BBBFDD700A93372 /* NSMainTableViewController.m */,
 				24A3C1EF1BBAFF3100A93372 /* CoreData UNKNOWN */,
 				24A3C20C1BBAFF3100A93372 /* CoreData UNKNOWNTests */,
 				24A3C1EE1BBAFF3100A93372 /* Products */,
@@ -85,12 +90,12 @@
 			children = (
 				24A3C1F41BBAFF3100A93372 /* AppDelegate.h */,
 				24A3C1F51BBAFF3100A93372 /* AppDelegate.m */,
-				24A3C1FA1BBAFF3100A93372 /* ViewController.h */,
-				24A3C1FB1BBAFF3100A93372 /* ViewController.m */,
 				24A3C1FD1BBAFF3100A93372 /* Main.storyboard */,
 				24A3C2001BBAFF3100A93372 /* Images.xcassets */,
 				24A3C2021BBAFF3100A93372 /* LaunchScreen.xib */,
 				24A3C1F71BBAFF3100A93372 /* CoreData_UNKNOWN.xcdatamodeld */,
+				24A3C2191BBB349200A93372 /* NSStudent.h */,
+				24A3C21A1BBB349200A93372 /* NSStudent.m */,
 				24A3C1F01BBAFF3100A93372 /* Supporting Files */,
 			);
 			path = "CoreData UNKNOWN";
@@ -224,8 +229,9 @@
 			files = (
 				24A3C1F61BBAFF3100A93372 /* AppDelegate.m in Sources */,
 				24A3C1F91BBAFF3100A93372 /* CoreData_UNKNOWN.xcdatamodeld in Sources */,
-				24A3C1FC1BBAFF3100A93372 /* ViewController.m in Sources */,
 				24A3C1F31BBAFF3100A93372 /* main.m in Sources */,
+				24A3C21B1BBB349200A93372 /* NSStudent.m in Sources */,
+				24A3C21E1BBBFDD700A93372 /* NSMainTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

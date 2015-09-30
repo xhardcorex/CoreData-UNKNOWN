@@ -1,12 +1,12 @@
 //
-//  AppDelegate.m
+//  NSMainTableViewController.m
 //  CoreData UNKNOWN
 //
-//  Created by Nik on 29.09.15.
+//  Created by Nik on 30.09.15.
 //  Copyright (c) 2015 Nik. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "NSMainTableViewController.h"
 #import "NSStudent.h"
 
 static NSString* firstNames[] = {
@@ -36,16 +36,53 @@ static NSString* lastNames[] = {
     @"Spano", @"Folson", @"Arguelles", @"Burke", @"Rook"
 };
 
-static NSString* carModelNames[] = {
-    @"Dodge", @"Toyota", @"BMW", @"Lada", @"Volga"
-};
-
-@interface AppDelegate ()
-
+@interface NSMainTableViewController ()
+@property (strong,nonatomic) NSArray* array;
 @end
 
-@implementation AppDelegate
+@implementation NSMainTableViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+  /*  for (int i = 0;i< 30; i++) {
+        [self addRandomStudent];
+    }*/
+    
+    
+    
+
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+#warning Potentially incomplete method implementation.
+    // Return the number of sections.
+    
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+#warning Incomplete method implementation.
+
+    
+    [self printAll];
+    NSLog(@" [self.array count]  = %d ",[self.array count]);
+    return [self.array count];
+}
+//
+//  ViewController.m
+//  CoreData UNKNOWN
+//
+//  Created by Nik on 29.09.15.
+//  Copyright (c) 2015 Nik. All rights reserved.
+//
 - (NSStudent*) addRandomStudent {
     
     NSStudent* student =
@@ -54,14 +91,12 @@ static NSString* carModelNames[] = {
     student.firstName = firstNames[arc4random_uniform(50)];
     student.lastName = lastNames[arc4random_uniform(50)];
     student.age = [NSNumber numberWithInt:10+arc4random()%20];
-    NSError* error = nil;
-    
     /*if(![self.managedObjectContext save:&error]){
-        
-        NSLog(@"%@",[error localizedDescription]);
-        
-    }*/
-    
+     
+     NSLog(@"%@",[error localizedDescription]);
+     
+     }*/
+    [self.managedObjectContext save:nil];
     return student;
 }
 - (void) printAll{
@@ -71,97 +106,32 @@ static NSString* carModelNames[] = {
     NSEntityDescription* description =
     [NSEntityDescription entityForName:@"NSStudent" inManagedObjectContext:self.managedObjectContext];
     
+    
+    NSArray* validNames = @[@"Tran"];
     [request setEntity:description];
+    
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"firstName IN %@",validNames];
+    
+    [request setPredicate:predicate];
     NSError* errors= nil;
     
-    NSArray* array = [self.managedObjectContext executeFetchRequest:request error:&errors];
+    self.array = [self.managedObjectContext executeFetchRequest:request error:&errors];
     
     
     
-    for (NSStudent* student  in array ) {
+    for (NSStudent* student  in self.array ) {
         
         NSLog(@"%@ %@ %@",student.firstName,student.lastName,student.age);
         //  [self.managedObjectContext deleteObject:student];
         
     }
-   // [self.managedObjectContext save:nil];
-    
-
-}
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
- // self.managedObjectContext;
-  
- /*  NSManagedObject* student = [NSEntityDescription insertNewObjectForEntityForName:@"NSStudent"
-                                                             inManagedObjectContext:_managedObjectContext];
-    
-    [student setValue:@"acac" forKey:@"firstName"];
-    [student setValue:@"czxcz" forKey:@"lastName"];
-    [student setValue:[NSNumber numberWithInt:12] forKey:@"age"];
-    
-    NSError* error = nil;
-    
-    if(![self.managedObjectContext save:&error]){
-        
-        NSLog(@"%@",[error localizedDescription]);
-        
-    }
+    [self.managedObjectContext save:nil];
     
     
-    NSFetchRequest* request = [[NSFetchRequest alloc]init];
-    
-    NSEntityDescription* description =
-    [NSEntityDescription entityForName:@"NSStudent" inManagedObjectContext:self.managedObjectContext];
-    
-    [request setEntity:description];
-    NSError* errors= nil;
-   
-    NSArray* array = [self.managedObjectContext executeFetchRequest:request error:&errors];
-
-    
-    for (NSStudent* student  in array ) {
-        
-        NSLog(@"%@ %@ %@",student.firstName,student.lastName,student.age);
-        
-    }
-    
-    */
-   
-    //[self addRandomStudent];
-    //[self.managedObjectContext save:nil];
-    
-    
-  //  [self addRandomStudent];
-    
-    //[self addRandomStudent];
-    
-  
-        return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-}
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
 
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    // Saves changes in the application's managed object context before the application terminates.
-    [self saveContext];
-}
 
 #pragma mark - Core Data stack
 
@@ -243,4 +213,75 @@ static NSString* carModelNames[] = {
     }
 }
 
+
+
+
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString* identifier =@"Identifier";
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:identifier];
+   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    
+    //Если ячейка не найдена
+ 
+    if(!cell){
+        cell = [[UITableViewCell alloc]initWithStyle:  UITableViewCellStyleValue1 reuseIdentifier:identifier];
+    }
+       NSStudent* student = [self.array objectAtIndex: indexPath.row];
+    
+    cell.textLabel.text =[NSString stringWithFormat:@"%@ %@",student.firstName,student.lastName];
+    
+    return cell;
+}
+
+
+/*
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+*/
+
+/*
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }   
+}
+*/
+
+/*
+// Override to support rearranging the table view.
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+}
+*/
+
+/*
+// Override to support conditional rearranging of the table view.
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the item to be re-orderable.
+    return YES;
+}
+*/
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+
 @end
+
