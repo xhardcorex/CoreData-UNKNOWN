@@ -43,7 +43,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="m52-py-ZBx">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="93Q-lH-aeG"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="93Q-lH-aeG">
+                            <connections>
+                                <action selector="createNewStuden:" destination="tvE-pD-YIs" id="gxa-z7-v4h"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </tableViewController>
@@ -51,10 +55,10 @@
             </objects>
             <point key="canvasLocation" x="-961" y="-181"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Create Student Table View Controller-->
         <scene sceneID="pNw-4A-6w3">
             <objects>
-                <tableViewController id="z5I-Dx-yOV" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="NSCreateStudentTableViewController" id="z5I-Dx-yOV" customClass="NSCreateStudentTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Vtj-Ct-7NC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,6 +133,9 @@
                                                     <state key="normal" title="Добавить студента">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="addNewStudent:" destination="z5I-Dx-yOV" eventType="touchUpInside" id="i5o-ir-1hx"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -142,6 +149,11 @@
                         </connections>
                     </tableView>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="ageTextField" destination="bD1-00-tqt" id="p9f-Iu-hxG"/>
+                        <outlet property="firstNameTextField" destination="Lkw-HN-YXe" id="PhJ-Cc-YBZ"/>
+                        <outlet property="lastNameTextField" destination="xPW-5f-UZK" id="XGc-Ng-LO7"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o5H-47-b9T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

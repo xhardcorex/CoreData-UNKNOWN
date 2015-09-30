@@ -9,6 +9,7 @@
 #import "NSMainTableViewController.h"
 #import "NSStudent.h"
 #import "NSCoreData.h"
+#import "NSCreateStudentTableViewController.h"
 
 
 @interface NSMainTableViewController ()
@@ -21,7 +22,15 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
-
+#pragma mark - Actions
+- (IBAction)createNewStuden:(id)sender{
+    
+    NSCreateStudentTableViewController* tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"NSCreateStudentTableViewController"];
+    
+    [self.navigationController pushViewController:tvc animated:YES];
+    
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -30,7 +39,7 @@
     }*/
     
     //[[NSCoreData sharedManager ] deleteAllObjects];
-  /*for (int i = 0 ; i < 30; i++) {
+ /* for (int i = 0 ; i < 5; i++) {
         [[NSCoreData sharedManager]addRandomStudent];
     }*/
 
@@ -48,9 +57,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+#pragma mark - Table view delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    NSCreateStudentTableViewController* tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"NSCreateStudentTableViewController"];
+    
+    NSStudent* student = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    self.delegate = tvc;
+    [_delegate sendStudent:student];
+    
+    NSLog(@"%@ %@ %@",student.firstName,student.lastName,student.age);
+    
+    [self.navigationController pushViewController:tvc animated:YES];
+    
+    tvc.firstNameTextField.text = student.firstName;
+    tvc.lastNameTextField.text = student.lastName;
+    tvc.firstNameTextField.text = [NSString stringWithFormat:@"%@",student.age];
+}
+#pragma mark - Table View data source
 
-#pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     self.fetchedResultsController = [[NSCoreData sharedManager] getAllStudents];
@@ -61,6 +87,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    
+  NSLog(@"Count = %lu",(unsigned long)[sectionInfo numberOfObjects]);
     return [sectionInfo numberOfObjects];
 }
 
@@ -105,10 +133,7 @@
     }
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
-}
+
 
 #pragma mark - Fetched results controller
 
@@ -118,26 +143,7 @@
         return _fetchedResultsController;
     }
     
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    
-    // Set the batch size to a suitable number.
-    [fetchRequest setFetchBatchSize:20];
-    
-    // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
-    NSArray *sortDescriptors = @[sortDescriptor];
-    
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
-    aFetchedResultsController.delegate = self;
-    self.fetchedResultsController = aFetchedResultsController;
-    
+   
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {
         // Replace this implementation with code to handle the error appropriately.
@@ -186,9 +192,6 @@
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
             
-        case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-            break;
             
         case NSFetchedResultsChangeMove:
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -225,6 +228,7 @@
     // The directory the application uses to store the Core Data store file. This code uses a directory named "nik.CoreData_UNKNOWN" in the application's documents directory.
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
+
 
 - (NSManagedObjectModel *)managedObjectModel {
     // The managed object model for the application. It is a fatal error for the application not to be able to find and load its model.

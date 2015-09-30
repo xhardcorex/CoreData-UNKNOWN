@@ -167,7 +167,7 @@ static NSString* carModelNames[] = {
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                         managedObjectContext:self.managedObjectContext
                                           sectionNameKeyPath:nil
-                                                   cacheName:@"Master"];
+                                                   cacheName:nil];
     self.fetchedResultsController = aFetchedResultsController;
     
     NSError *error = nil;
@@ -222,5 +222,6 @@ static NSString* carModelNames[] = {
     
     return student;
 }
+
 
 @end

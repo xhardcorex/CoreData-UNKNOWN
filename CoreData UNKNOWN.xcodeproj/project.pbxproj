@@ -45,8 +45,8 @@
 		24A3C20F1BBAFF3100A93372 /* CoreData_UNKNOWNTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreData_UNKNOWNTests.m; sourceTree = "<group>"; };
 		24A3C2191BBB349200A93372 /* NSStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStudent.h; sourceTree = "<group>"; };
 		24A3C21A1BBB349200A93372 /* NSStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStudent.m; sourceTree = "<group>"; };
-		24A3C21C1BBBFDD700A93372 /* NSMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSMainTableViewController.h; path = ../NSMainTableViewController.h; sourceTree = "<group>"; };
-		24A3C21D1BBBFDD700A93372 /* NSMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSMainTableViewController.m; path = ../NSMainTableViewController.m; sourceTree = "<group>"; };
+		24A3C21C1BBBFDD700A93372 /* NSMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMainTableViewController.h; sourceTree = "<group>"; };
+		24A3C21D1BBBFDD700A93372 /* NSMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMainTableViewController.m; sourceTree = "<group>"; };
 		24A3C21F1BBC211400A93372 /* NSCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSCoreData.h; path = ../NSCoreData.h; sourceTree = "<group>"; };
 		24A3C2201BBC211400A93372 /* NSCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSCoreData.m; path = ../NSCoreData.m; sourceTree = "<group>"; };
 		24A3C2221BBC55D900A93372 /* NSCreateStudentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSCreateStudentTableViewController.h; sourceTree = "<group>"; };
@@ -74,8 +74,7 @@
 		24A3C1E41BBAFF3100A93372 = {
 			isa = PBXGroup;
 			children = (
-				24A3C2221BBC55D900A93372 /* NSCreateStudentTableViewController.h */,
-				24A3C2231BBC55D900A93372 /* NSCreateStudentTableViewController.m */,
+				24A3C2251BBC568300A93372 /* Controllers */,
 				24A3C1EF1BBAFF3100A93372 /* CoreData UNKNOWN */,
 				24A3C20C1BBAFF3100A93372 /* CoreData UNKNOWNTests */,
 				24A3C1EE1BBAFF3100A93372 /* Products */,
@@ -96,8 +95,6 @@
 			children = (
 				24A3C21F1BBC211400A93372 /* NSCoreData.h */,
 				24A3C2201BBC211400A93372 /* NSCoreData.m */,
-				24A3C21C1BBBFDD700A93372 /* NSMainTableViewController.h */,
-				24A3C21D1BBBFDD700A93372 /* NSMainTableViewController.m */,
 				24A3C1F41BBAFF3100A93372 /* AppDelegate.h */,
 				24A3C1F51BBAFF3100A93372 /* AppDelegate.m */,
 				24A3C1FD1BBAFF3100A93372 /* Main.storyboard */,
@@ -135,6 +132,17 @@
 				24A3C20E1BBAFF3100A93372 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		24A3C2251BBC568300A93372 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				24A3C2221BBC55D900A93372 /* NSCreateStudentTableViewController.h */,
+				24A3C2231BBC55D900A93372 /* NSCreateStudentTableViewController.m */,
+				24A3C21C1BBBFDD700A93372 /* NSMainTableViewController.h */,
+				24A3C21D1BBBFDD700A93372 /* NSMainTableViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
