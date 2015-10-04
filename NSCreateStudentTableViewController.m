@@ -25,7 +25,6 @@
 
 - (void) sendStudent:(NSStudent *)student{
     
-    NSLog(@"DELEGATE");
     self.student = student;
    
 }
@@ -163,7 +162,7 @@
     student.age = [NSNumber numberWithInteger:[self.ageTextField.text integerValue]];
     
 
-    [self deleteAndInsert];
+   // [self deleteAndInsert];
    
    /* NSStudent* student = [[NSStudent alloc]init];
     

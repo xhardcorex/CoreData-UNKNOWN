@@ -14,10 +14,16 @@
 		24A3C2011BBAFF3100A93372 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24A3C2001BBAFF3100A93372 /* Images.xcassets */; };
 		24A3C2041BBAFF3100A93372 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24A3C2021BBAFF3100A93372 /* LaunchScreen.xib */; };
 		24A3C2101BBAFF3100A93372 /* CoreData_UNKNOWNTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C20F1BBAFF3100A93372 /* CoreData_UNKNOWNTests.m */; };
-		24A3C21B1BBB349200A93372 /* NSStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C21A1BBB349200A93372 /* NSStudent.m */; };
 		24A3C21E1BBBFDD700A93372 /* NSMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C21D1BBBFDD700A93372 /* NSMainTableViewController.m */; };
 		24A3C2211BBC211400A93372 /* NSCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C2201BBC211400A93372 /* NSCoreData.m */; };
 		24A3C2241BBC55D900A93372 /* NSCreateStudentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C2231BBC55D900A93372 /* NSCreateStudentTableViewController.m */; };
+		24A3C2311BBD62A800A93372 /* NObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C2301BBD62A800A93372 /* NObject.m */; };
+		24A3C23A1BBD907000A93372 /* NSCourseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C2391BBD907000A93372 /* NSCourseTableViewController.m */; };
+		24A3C23D1BBDB88300A93372 /* NSCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C23C1BBDB88300A93372 /* NSCourse.m */; };
+		24A3C2401BBDB88400A93372 /* NSStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C23F1BBDB88400A93372 /* NSStudent.m */; };
+		24A3C2431BBEDFA600A93372 /* NSPrintCourseStudentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3C2421BBEDFA600A93372 /* NSPrintCourseStudentsTableViewController.m */; };
+		24B975501BC1617800C5121A /* NSCreateCourseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B9754F1BC1617800C5121A /* NSCreateCourseTVC.m */; settings = {ASSET_TAGS = (); }; };
+		24B975531BC1C23700C5121A /* NSGetAllStudentsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B975521BC1C23700C5121A /* NSGetAllStudentsTVC.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,14 +49,26 @@
 		24A3C2091BBAFF3100A93372 /* CoreData UNKNOWNTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CoreData UNKNOWNTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24A3C20E1BBAFF3100A93372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24A3C20F1BBAFF3100A93372 /* CoreData_UNKNOWNTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreData_UNKNOWNTests.m; sourceTree = "<group>"; };
-		24A3C2191BBB349200A93372 /* NSStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStudent.h; sourceTree = "<group>"; };
-		24A3C21A1BBB349200A93372 /* NSStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStudent.m; sourceTree = "<group>"; };
 		24A3C21C1BBBFDD700A93372 /* NSMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMainTableViewController.h; sourceTree = "<group>"; };
 		24A3C21D1BBBFDD700A93372 /* NSMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMainTableViewController.m; sourceTree = "<group>"; };
 		24A3C21F1BBC211400A93372 /* NSCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSCoreData.h; path = ../NSCoreData.h; sourceTree = "<group>"; };
 		24A3C2201BBC211400A93372 /* NSCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSCoreData.m; path = ../NSCoreData.m; sourceTree = "<group>"; };
 		24A3C2221BBC55D900A93372 /* NSCreateStudentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSCreateStudentTableViewController.h; sourceTree = "<group>"; };
 		24A3C2231BBC55D900A93372 /* NSCreateStudentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSCreateStudentTableViewController.m; sourceTree = "<group>"; };
+		24A3C22F1BBD62A800A93372 /* NObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NObject.h; sourceTree = "<group>"; };
+		24A3C2301BBD62A800A93372 /* NObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NObject.m; sourceTree = "<group>"; };
+		24A3C2381BBD907000A93372 /* NSCourseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSCourseTableViewController.h; sourceTree = "<group>"; };
+		24A3C2391BBD907000A93372 /* NSCourseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSCourseTableViewController.m; sourceTree = "<group>"; };
+		24A3C23B1BBDB88300A93372 /* NSCourse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSCourse.h; sourceTree = "<group>"; };
+		24A3C23C1BBDB88300A93372 /* NSCourse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSCourse.m; sourceTree = "<group>"; };
+		24A3C23E1BBDB88400A93372 /* NSStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStudent.h; sourceTree = "<group>"; };
+		24A3C23F1BBDB88400A93372 /* NSStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStudent.m; sourceTree = "<group>"; };
+		24A3C2411BBEDFA600A93372 /* NSPrintCourseStudentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSPrintCourseStudentsTableViewController.h; path = "CoreData UNKNOWN/NSPrintCourseStudentsTableViewController.h"; sourceTree = "<group>"; };
+		24A3C2421BBEDFA600A93372 /* NSPrintCourseStudentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSPrintCourseStudentsTableViewController.m; path = "CoreData UNKNOWN/NSPrintCourseStudentsTableViewController.m"; sourceTree = "<group>"; };
+		24B9754E1BC1617800C5121A /* NSCreateCourseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSCreateCourseTVC.h; sourceTree = "<group>"; };
+		24B9754F1BC1617800C5121A /* NSCreateCourseTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSCreateCourseTVC.m; sourceTree = "<group>"; };
+		24B975511BC1C23700C5121A /* NSGetAllStudentsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSGetAllStudentsTVC.h; sourceTree = "<group>"; };
+		24B975521BC1C23700C5121A /* NSGetAllStudentsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSGetAllStudentsTVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,9 +118,13 @@
 				24A3C1FD1BBAFF3100A93372 /* Main.storyboard */,
 				24A3C2001BBAFF3100A93372 /* Images.xcassets */,
 				24A3C2021BBAFF3100A93372 /* LaunchScreen.xib */,
+				24A3C23B1BBDB88300A93372 /* NSCourse.h */,
+				24A3C23E1BBDB88400A93372 /* NSStudent.h */,
+				24A3C23F1BBDB88400A93372 /* NSStudent.m */,
+				24A3C23C1BBDB88300A93372 /* NSCourse.m */,
 				24A3C1F71BBAFF3100A93372 /* CoreData_UNKNOWN.xcdatamodeld */,
-				24A3C2191BBB349200A93372 /* NSStudent.h */,
-				24A3C21A1BBB349200A93372 /* NSStudent.m */,
+				24A3C22F1BBD62A800A93372 /* NObject.h */,
+				24A3C2301BBD62A800A93372 /* NObject.m */,
 				24A3C1F01BBAFF3100A93372 /* Supporting Files */,
 			);
 			path = "CoreData UNKNOWN";
@@ -137,10 +159,18 @@
 		24A3C2251BBC568300A93372 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				24B975511BC1C23700C5121A /* NSGetAllStudentsTVC.h */,
+				24B975521BC1C23700C5121A /* NSGetAllStudentsTVC.m */,
+				24B9754E1BC1617800C5121A /* NSCreateCourseTVC.h */,
+				24B9754F1BC1617800C5121A /* NSCreateCourseTVC.m */,
+				24A3C2381BBD907000A93372 /* NSCourseTableViewController.h */,
+				24A3C2391BBD907000A93372 /* NSCourseTableViewController.m */,
 				24A3C2221BBC55D900A93372 /* NSCreateStudentTableViewController.h */,
 				24A3C2231BBC55D900A93372 /* NSCreateStudentTableViewController.m */,
 				24A3C21C1BBBFDD700A93372 /* NSMainTableViewController.h */,
 				24A3C21D1BBBFDD700A93372 /* NSMainTableViewController.m */,
+				24A3C2411BBEDFA600A93372 /* NSPrintCourseStudentsTableViewController.h */,
+				24A3C2421BBEDFA600A93372 /* NSPrintCourseStudentsTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -189,7 +219,7 @@
 		24A3C1E51BBAFF3100A93372 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Nik;
 				TargetAttributes = {
 					24A3C1EC1BBAFF3100A93372 = {
@@ -246,11 +276,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				24A3C2241BBC55D900A93372 /* NSCreateStudentTableViewController.m in Sources */,
+				24B975501BC1617800C5121A /* NSCreateCourseTVC.m in Sources */,
+				24A3C23D1BBDB88300A93372 /* NSCourse.m in Sources */,
+				24B975531BC1C23700C5121A /* NSGetAllStudentsTVC.m in Sources */,
 				24A3C1F61BBAFF3100A93372 /* AppDelegate.m in Sources */,
 				24A3C1F91BBAFF3100A93372 /* CoreData_UNKNOWN.xcdatamodeld in Sources */,
+				24A3C2401BBDB88400A93372 /* NSStudent.m in Sources */,
+				24A3C2311BBD62A800A93372 /* NObject.m in Sources */,
+				24A3C2431BBEDFA600A93372 /* NSPrintCourseStudentsTableViewController.m in Sources */,
 				24A3C1F31BBAFF3100A93372 /* main.m in Sources */,
+				24A3C23A1BBD907000A93372 /* NSCourseTableViewController.m in Sources */,
 				24A3C2211BBC211400A93372 /* NSCoreData.m in Sources */,
-				24A3C21B1BBB349200A93372 /* NSStudent.m in Sources */,
 				24A3C21E1BBBFDD700A93372 /* NSMainTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,6 +350,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -329,7 +366,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -367,7 +404,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -380,7 +417,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "CoreData UNKNOWN/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "nik.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -390,7 +429,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "CoreData UNKNOWN/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "nik.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -409,6 +450,7 @@
 				);
 				INFOPLIST_FILE = "CoreData UNKNOWNTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "nik.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoreData UNKNOWN.app/CoreData UNKNOWN";
 			};
@@ -424,6 +466,7 @@
 				);
 				INFOPLIST_FILE = "CoreData UNKNOWNTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "nik.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoreData UNKNOWN.app/CoreData UNKNOWN";
 			};
@@ -448,6 +491,7 @@
 				24A3C2151BBAFF3100A93372 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		24A3C2161BBAFF3100A93372 /* Build configuration list for PBXNativeTarget "CoreData UNKNOWNTests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +500,7 @@
 				24A3C2181BBAFF3100A93372 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

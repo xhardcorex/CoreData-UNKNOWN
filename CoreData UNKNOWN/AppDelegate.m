@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "NSStudent.h"
+#import "NSCoreData.h"
 
 static NSString* firstNames[] = {
     @"Tran", @"Lenore", @"Bud", @"Fredda", @"Katrice",
@@ -62,7 +63,7 @@ static NSString* carModelNames[] = {
     
     for (NSStudent* student  in array ) {
         
-        NSLog(@"%@ %@ %@",student.firstName,student.lastName,student.age);
+        NSLog(@"%@ %@ %@ %lu",student.firstName,student.lastName,student.age,(unsigned long)[student.courses count]);
         //  [self.managedObjectContext deleteObject:student];
         
     }
@@ -70,10 +71,20 @@ static NSString* carModelNames[] = {
     
 
 }
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
  // self.managedObjectContext;
-  
+   // [self printAll];
+    //[[NSCoreData sharedManager]addCourse ];
+    //[[NSCoreData sharedManager] getCourses];
+    
+   // [self printAll];
+    // [[NSCoreData sharedManager]deleteAllCourses ];
+    
+   // [[NSCoreData sharedManager]addCourse ];
+  //  [[NSCoreData sharedManager] printAllObjects ];
+    
  /*  NSManagedObject* student = [NSEntityDescription insertNewObjectForEntityForName:@"NSStudent"
                                                              inManagedObjectContext:_managedObjectContext];
     

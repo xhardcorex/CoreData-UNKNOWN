@@ -29,20 +29,31 @@
     
     [self.navigationController pushViewController:tvc animated:YES];
     
-    
+   
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-  /*  for (int i = 0;i< 30; i++) {
-        [self addRandomStudent];
-    }*/
+   /* for (int i = 0;i< 100; i++) {
+        [[NSCoreData sharedManager] addRandomStudent];
+    }
+  //  [[NSCoreData sharedManager] addRandomStudent];
+  [[NSCoreData sharedManager] addAllCourses];
+   [[NSCoreData sharedManager] addToIOS];
+    [[NSCoreData sharedManager] addToAndroid];
+    [[NSCoreData sharedManager] addToJavaScript];*/
     
+              
+ //  [[NSCoreData sharedManager ] deleteAllCourses];
     //[[NSCoreData sharedManager ] deleteAllObjects];
- /* for (int i = 0 ; i < 5; i++) {
+
+ /* for (int i = 0 ; i < 30; i++) {
         [[NSCoreData sharedManager]addRandomStudent];
     }*/
 
+   //  [[NSCoreData sharedManager]addRandomStudent]; [[NSCoreData sharedManager]addRandomStudent];
+  // [[NSCoreData sharedManager] setCourse];
+   // self.fetchedResultsController =[[NSCoreData sharedManager] getAllStudents];
 }
 - (NSManagedObjectContext*) managedObjectContext {
     
@@ -67,13 +78,11 @@
     self.delegate = tvc;
     [_delegate sendStudent:student];
     
-    NSLog(@"%@ %@ %@",student.firstName,student.lastName,student.age);
+    //NSLog(@"%@ %@ %@",student.firstName,student.lastName,student.age);
     
     [self.navigationController pushViewController:tvc animated:YES];
     
-    tvc.firstNameTextField.text = student.firstName;
-    tvc.lastNameTextField.text = student.lastName;
-    tvc.firstNameTextField.text = [NSString stringWithFormat:@"%@",student.age];
+
 }
 #pragma mark - Table View data source
 
@@ -108,7 +117,9 @@
     }
     NSStudent* student = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    cell.textLabel.text =[NSString stringWithFormat:@"%@ %@",student.firstName,student.lastName];
+    cell.textLabel.text =[NSString stringWithFormat:@"%@ %@ ",student.lastName ,student.firstName];
+  
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }

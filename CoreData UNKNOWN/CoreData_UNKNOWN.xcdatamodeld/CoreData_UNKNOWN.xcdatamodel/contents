@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="NSStudent" representedClassName="NSStudent" syncable="YES">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15A284" minimumToolsVersion="Automatic">
+    <entity name="NObject" representedClassName="NObject" syncable="YES"/>
+    <entity name="NSCourse" representedClassName="NSCourse" parentEntity="NObject" syncable="YES">
+        <attribute name="mentorName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nameOfCourse" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NSStudent" inverseName="courses" inverseEntity="NSStudent" syncable="YES"/>
+    </entity>
+    <entity name="NSStudent" representedClassName="NSStudent" parentEntity="NObject" syncable="YES">
         <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="courses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NSCourse" inverseName="students" inverseEntity="NSCourse" syncable="YES"/>
     </entity>
     <elements>
-        <element name="NSStudent" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="NObject" positionX="-65" positionY="351" width="128" height="43"/>
+        <element name="NSCourse" positionX="-288" positionY="524" width="128" height="88"/>
+        <element name="NSStudent" positionX="126" positionY="524" width="128" height="103"/>
     </elements>
 </model>

@@ -1,32 +1,30 @@
 //
-//  NSMainTableViewController.h
+//  NSCourseTableViewController.h
 //  CoreData UNKNOWN
 //
-//  Created by Nik on 30.09.15.
+//  Created by Nik on 01.10.15.
 //  Copyright (c) 2015 Nik. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "NSCoreData.h"
 
-@protocol sendStudentDelegate
+@protocol sendCourse
 
-@optional
-- (void) sendStudent:(NSStudent*) student;
-- (void) sendCourse:(NSCourse*) course;
+- (void) courseShow:(NSString*)course;
 
 @end
-@interface NSMainTableViewController : UITableViewController <UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate>
+
+@interface NSCourseTableViewController : UITableViewController <NSFetchedResultsControllerDelegate,UITableViewDataSource,UITableViewDelegate,UINavigationBarDelegate>
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) id <sendStudentDelegate> delegate;
+@property (strong, nonatomic) id <sendCourse> delegate;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
 
-- (IBAction)createNewStuden:(id)sender;
 
 @end

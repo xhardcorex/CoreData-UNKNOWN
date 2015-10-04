@@ -1,20 +1,19 @@
 //
-//  NSStudent.m
+//  NSCourse.m
 //  CoreData UNKNOWN
 //
 //  Created by Nik on 01.10.15.
 //  Copyright (c) 2015 Nik. All rights reserved.
 //
 
-#import "NSStudent.h"
 #import "NSCourse.h"
+#import "NSStudent.h"
 
 
-@implementation NSStudent
+@implementation NSCourse
 
-@dynamic age;
-@dynamic firstName;
-@dynamic lastName;
-@dynamic courses;
+@dynamic nameOfCourse;
+@dynamic mentorName;
+@dynamic students;
 
 @end
